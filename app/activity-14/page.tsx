@@ -40,7 +40,7 @@ export default function TreasureMapPage() {
             isGameOver={isGameOver}
             streak={streak}
         >
-            <div className="relative w-full max-w-4xl h-[60vh] bg-amber-100 rounded-3xl overflow-hidden shadow-2xl border-8 border-amber-900/50 flex flex-col items-center">
+            <div className="relative w-full max-w-4xl h-[80vh] min-h-[600px] bg-amber-100 rounded-3xl overflow-hidden shadow-2xl border-8 border-amber-900/50 flex flex-col items-center">
 
                 {/* Map Texture Overlay */}
                 <div className="absolute inset-0 opacity-20 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#8B4513 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
@@ -50,7 +50,7 @@ export default function TreasureMapPage() {
                     <h2 className="text-xl font-bold text-amber-900 font-serif">{currentQuestion.question}</h2>
                 </div>
 
-                <div className="flex-1 w-full grid grid-cols-2 gap-8 p-12 items-center justify-items-center z-10">
+                <div className="flex-1 w-full grid grid-cols-2 gap-4 p-6 items-center justify-items-center z-10">
                     {currentQuestion.options.map((opt, idx) => {
                         const isDug = dugIndex === idx;
                         const isCorrect = opt === currentQuestion.answer;
@@ -65,15 +65,15 @@ export default function TreasureMapPage() {
                                 onClick={() => handleDig(opt, idx)}
                             >
                                 {/* The Ground / X Mark */}
-                                <div className={`absolute inset-0 bg-amber-300 rounded-2xl border-4 border-amber-400 border-dashed flex items-center justify-center transition-opacity duration-500 ${isDug ? 'opacity-0' : 'opacity-100'}`}>
-                                    <XCircle className="text-amber-700/50 w-24 h-24" strokeWidth={1} />
-                                    <span className="absolute bottom-4 font-bold text-amber-800 bg-amber-200/80 px-2 py-1 rounded">
+                                <div className={`absolute inset-0 bg-amber-300 rounded-2xl border-4 border-amber-400 border-dashed flex flex-col items-center justify-center p-2 transition-opacity duration-500 ${isDug ? 'opacity-0' : 'opacity-100'}`}>
+                                    <XCircle className="text-amber-700/50 w-16 h-16 mb-2 shrink-0" strokeWidth={1} />
+                                    <span className="font-bold text-amber-900 bg-amber-200/80 px-2 py-1 rounded text-sm sm:text-base text-center leading-tight w-full break-words">
                                         {opt}
                                     </span>
                                 </div>
 
                                 {/* The Hole (Revealed Content) */}
-                                <div className="absolute inset-0 bg-amber-900/40 rounded-full shadow-inner flex items-center justify-center">
+                                <div className="absolute inset-0 bg-amber-900/40 rounded-full shadow-inner flex items-center justify-center pointer-events-none">
                                     {isDug && (
                                         <motion.div
                                             initial={{ scale: 0, y: 20 }}

@@ -43,7 +43,7 @@ export default function TrainSwitchPage() {
             isGameOver={isGameOver}
             streak={streak}
         >
-            <div className="w-full max-w-4xl h-[60vh] bg-stone-200 rounded-xl overflow-hidden shadow-inner border-4 border-stone-400 relative flex flex-col items-center pt-8">
+            <div className="w-full max-w-4xl h-[80vh] min-h-[600px] bg-stone-200 rounded-xl overflow-hidden shadow-inner border-4 border-stone-400 relative flex flex-col items-center pt-8">
 
                 {/* Question Sign */}
                 <div className="bg-yellow-400 text-black p-4 border-4 border-black font-bold text-xl rounded shadow-lg z-20">
@@ -53,10 +53,10 @@ export default function TrainSwitchPage() {
                 {/* Tracks Layout */}
                 <div className="flex-1 w-full relative flex justify-center items-end pb-8">
                     {/* Main Line */}
-                    <div className="absolute bottom-0 top-[20%] w-4 bg-stone-600 left-1/2 -translate-x-1/2"></div>
+                    <div className="absolute bottom-0 top-[10%] w-4 bg-stone-600 left-1/2 -translate-x-1/2"></div>
 
                     {/* Branching Options */}
-                    <div className="absolute top-[30%] w-full flex justify-between px-16 h-full">
+                    <div className="absolute top-[10%] w-full flex justify-between px-16 h-full">
                         {currentQuestion.options.map((opt, idx) => {
                             // Angles for 4 tracks
                             const rotation = (idx - 1.5) * 20;
@@ -70,12 +70,13 @@ export default function TrainSwitchPage() {
                                     <button
                                         onClick={() => handleSwitch(idx, opt)}
                                         className={`
-                                        mb-20 z-10 p-4 rounded-xl border-4 font-bold transition-transform hover:scale-110 active:scale-95 bg-white shadow-lg
+                                        mb-20 z-10 px-3 py-2 sm:p-4 rounded-xl border-4 font-bold transition-transform hover:scale-110 active:scale-95 bg-white shadow-lg
+                                        text-xs sm:text-sm md:text-base max-w-[120px] sm:max-w-[160px] whitespace-normal leading-tight text-center flex items-center justify-center min-h-[60px] break-words
                                         ${selectedTrack === idx ? 'border-green-500 bg-green-50' : 'border-stone-500 text-stone-700'}
                                     `}
                                         style={{ transform: `translateX(${rotation * 3}px)` }}
                                     >
-                                        {opt}
+                                        <span className="w-full">{opt}</span>
                                     </button>
                                 </div>
                             )
